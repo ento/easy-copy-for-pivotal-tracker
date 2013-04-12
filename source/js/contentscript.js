@@ -2,8 +2,9 @@ $(function() {
   chrome.extension.sendMessage({'action': 'pageStart'});
 });
 
-$(document).on('click', '.item', function(e){
-  var id = $(this).attr('id').replace(/.*?story(\d+).*/,"$1");
+$(document).on('click', '.story', function(e){
+  var id = $(this).attr('class').replace(/.*story_(\d+).*/,"$1");
+  if (!id) { return; }
   var name = $(this).find('.story_name').text();
   var link = "https://www.pivotaltracker.com/story/show/" + id;
 
@@ -22,10 +23,10 @@ $(document).on('click', '.item', function(e){
 
   if (clip) {
     $('<div id="copy-msg">')
-      .css({ color: 'black' })
+      .css({ color: 'red', "font-size": 20 })
       .html(clip)
-      .prependTo('#status');
-    $('#status')
+      .prependTo('.status');
+    $('.status')
       .fadeIn(10)
       .delay(1000)
       .fadeOut(500, function() {
