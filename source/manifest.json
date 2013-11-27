@@ -23,6 +23,7 @@
   ],
   "permissions": [
     "tabs",
+    "clipboardWrite",
     "https://www.pivotaltracker.com/*",
     "http://www.pivotaltracker.com/*"
   ],
