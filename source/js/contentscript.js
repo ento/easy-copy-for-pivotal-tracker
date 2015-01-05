@@ -25,8 +25,8 @@ $(document).on('click', '.story', function(e){
     $('<div id="copy-msg">')
       .css({ color: 'red', "font-size": 20 })
       .html(clip)
-      .prependTo('.status');
-    $('.status')
+      .prependTo('.status_area');
+    $('.status_area')
       .fadeIn(10)
       .delay(1000)
       .fadeOut(500, function() {
