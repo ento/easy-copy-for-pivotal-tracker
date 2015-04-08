@@ -22,16 +22,16 @@ $(document).on('click', '.story', function(e){
   }
 
   if (clip) {
-    $('<div id="copy-msg">')
-      .css({ color: 'red', "font-size": 20 })
-      .html(clip)
-      .prependTo('.status_area');
-    $('.status_area')
-      .fadeIn(10)
-      .delay(1000)
-      .fadeOut(500, function() {
-        $('#copy-msg').remove();
-      });
+    $('ul.tn_flash_messages').html(
+      $('<li>')
+        .addClass('tn_flash_message tn_flash_flash tn_expiring_flash tn_sliding_list_item tn_sliding_list_fade-enter tn_sliding_list_fade-enter-active')
+        .css({"word-break": "break-all"})
+        .text(clip)
+    )
+
+    $('ul.tn_flash_messages').fadeIn(10).delay(1000).fadeOut(500, function() {
+      $('ul.tn_flash_messages').html('')
+    })
 
     chrome.extension.sendMessage({'text' : clip});
   }
