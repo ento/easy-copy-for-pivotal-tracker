@@ -6,6 +6,9 @@ $(document).on('click', '.story', function(e){
   var id = $(this).attr('class').replace(/.*story_(\d+).*/,"$1");
   if (!id) { return; }
   var name = $(this).find('.story_name').text();
+  if (!name) {
+    name = $(this).find('[name=story\\[name\\]]').val();
+  }
   var link = "https://www.pivotaltracker.com/story/show/" + id;
 
   var clip;
